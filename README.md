@@ -41,6 +41,7 @@ Develop a functional Android password manager application using Java and Android
 * Ensure the password input field hides the characters as they are typed.
 * Store this account data securely under the authenticated user's unique ID (UID) in the Firebase Realtime Database.
 * **Bonus:** Add a toggle button (like an eye icon) next to the password input field to allow the user to show/hide the password they are entering.
+* * **Bonus:** Store the paswwords in Firebase encrypted. More advanced encryption, the more bonus points.
 
 ### 4. Displaying Stored Accounts
 
@@ -55,6 +56,7 @@ Develop a functional Android password manager application using Java and Android
     * Upon confirmation, remove the corresponding account data from the Firebase Realtime Database.
     * Ensure the `RecyclerView` updates immediately to reflect the deletion.
 * **Bonus:** Implement functionality to automatically fetch and display a relevant logo/image for the account based on its Name (e.g., search for "Netflix logo" if the name is "Netflix"). You might need an external image loading library like `Glide` or `Picasso` and potentially a simple web search API or a predefined mapping.
+* **Bonus:** Include a copy button for the phone to copy the password to the clip board.
 
 ### 5. Filtering and Searching Accounts
 
