@@ -26,6 +26,7 @@ Develop a functional Android password manager application using Java and Android
     * Contains at least one digit (0-9).
     * Contains at least one special character (e.g., `!@#$%^&*`).
 * Implement validation logic to check these requirements and provide feedback to the user if they are not met.
+*(Note: This applies primarily to the Email/Password registration and stored account passwords)*
 
 ### 3. Storing Account Credentials
 
@@ -35,6 +36,7 @@ Develop a functional Android password manager application using Java and Android
     * Email/Username associated with the account
     * Password for the account (meeting the complexity requirements above)
     * Category (e.g., "Social," "Work," "Entertainment," "Finance") - consider using a `Spinner` or similar input.
+    * **URL** (Optional website address associated with the account, e.g., `https://www.netflix.com`)
     * Notes (optional additional details)
 * Ensure the password input field hides the characters as they are typed.
 * Store this account data securely under the authenticated user's unique ID (UID) in the Firebase Realtime Database.
@@ -45,7 +47,9 @@ Develop a functional Android password manager application using Java and Android
 * On the main screen after login, display all the user's stored accounts in a `RecyclerView`.
 * Each item in the `RecyclerView` should clearly display the **Account Name** and a **quick description** (you could use the Category or the first few words of the Notes).
 * When a user taps on an item in the `RecyclerView`, navigate to a new "Details" screen.
-* The "Details" screen must display *all* the saved information for that specific account (Name, Email/Username, Password, Category, Notes). *Consider how you will display the password securely here - perhaps initially hidden with an option to reveal.*
+* The "Details" screen must display *all* the saved information for that specific account (Name, Email/Username, Password, Category, **URL (if provided)**, Notes).
+    * *Consider how you will display the password securely here - perhaps initially hidden with an option to reveal.*
+    * **If a URL was saved** for the account, provide a clear mechanism on this Details screen (e.g., a clickable `TextView` showing the URL, or a dedicated 'Visit Website' button) that allows the user to open the URL in a web browser. This should be implemented using an `Intent` with `Intent.ACTION_VIEW`.
 * Implement functionality where a **long-click** on a `RecyclerView` item initiates the process to delete that **specific stored account** (e.g., the "Netflix" entry they saved, not their main user login). This deletion process must:
     * Display a **confirmation dialog** (e.g., `AlertDialog`) asking the user if they are sure they want to delete that specific account entry ("Delete 'Netflix' account?").
     * Upon confirmation, remove the corresponding account data from the Firebase Realtime Database.
@@ -60,7 +64,7 @@ Develop a functional Android password manager application using Java and Android
 ### 6. Application Settings & Management
 
 * Include a dedicated "Settings" screen accessible from the main view (e.g., via an options menu).
-* **Logout:** Provide a clear logout button/option that signs the user out of Firebase and returns them to the Login screen.
+* **Logout:** Provide a clear logout button/option that signs the user out of Firebase (and Google if implemented) and returns them to the Login screen.
 * **Delete Account:** Provide an option for the user to permanently delete their *entire* SecurePass user account (including their Firebase Authentication record and all their stored data in the Realtime Database).
     * **Crucially:** Implement a **confirmation dialog** (e.g., `AlertDialog`) asking the user to confirm this irreversible action before proceeding with the deletion.
 * **About Section:** Include an "About" section (perhaps within Settings or as a separate screen/dialog) displaying the app name, version (e.g., 1.0), and developer name(s).
